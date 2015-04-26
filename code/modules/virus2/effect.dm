@@ -310,13 +310,6 @@
 				return
 
 
-/client/proc/set_species_elite()
-	set category = "Fun"
-	set name = "Elite"
-
-	if(H.set_species("Skellington"))
-		mob << "<span class = 'warning'> A massive amount of flesh sloughs off your bones!</span>"
-		H.regenerate_icons()
 
 
 /datum/disease2/effect/fizzle
