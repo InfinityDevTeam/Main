@@ -131,6 +131,12 @@
 	icon_state = "bmbelt"
 	item_state = "bmbelt"
 
+/obj/item/weapon/storage/belt/security/marinebelt
+	name = "marine belt"
+	desc = "Standard UNSC combat belt."
+	icon_state = "marine_belt"
+	item_state = "marine_belt"
+
 /obj/item/weapon/storage/belt/soulstone
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"

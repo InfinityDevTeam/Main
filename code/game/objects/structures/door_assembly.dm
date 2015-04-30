@@ -104,19 +104,9 @@
 	glass = -1
 
 /obj/structure/door_assembly/multi_tile/
-	icon = 'icons/obj/doors/door_assembly2x1.dmi'
+
 	dir = EAST
-	var/width = 1
-
-	/*Temporary until we get sprites.
-		glass_type = "/multi_tile/glass"
-		airlock_type = "/multi_tile/maint"
-		glass = 1*/
-
-
-	base_icon_state = "g" //Remember to delete this line when reverting "glass" var to 1.
-	airlock_type = "/multi_tile/glass"
-	glass = -1 //To prevent bugs in deconstruction process.
+	var/width = 2
 
 /obj/structure/door_assembly/multi_tile/New()
 	if(dir in list(EAST, WEST))
@@ -135,6 +125,23 @@
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
+
+/obj/structure/door_assembly/multi_tile/glass
+		/*Temporary until we get sprites.
+		glass_type = "/multi_tile/glass"
+		airlock_type = "/multi_tile/maint"
+		glass = 1*/
+
+	icon = 'icons/obj/doors/door_assembly2x1glass.dmi'
+	base_icon_state = "g" //Remember to delete this line when reverting "glass" var to 1.
+	airlock_type = "/multi_tile/glass"
+	glass = -1 //To prevent bugs in deconstruction process.
+
+obj/structure/door_assembly/multi_tile/solid
+	icon = 'icons/obj/doors/door_assembly2x1solid.dmi'
+	base_icon_state = "g" //Remember to delete this line when reverting "glass" var to 1.
+	airlock_type = "/multi_tile/solid"
+	glass = -1 //To prevent bugs in deconstruction process.
 
 
 

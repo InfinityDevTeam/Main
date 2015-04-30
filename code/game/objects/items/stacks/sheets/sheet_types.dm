@@ -61,7 +61,8 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("airtight hatch assembly",        /obj/structure/door_assembly/door_assembly_hatch,        4, time = 50, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("maintenance hatch assembly",     /obj/structure/door_assembly/door_assembly_mhatch,       4, time = 50, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("high security airlock assembly", /obj/structure/door_assembly/door_assembly_highsecurity, 4, time = 50, one_per_turf = 1, on_floor = 1), \
-/*		new/datum/stack_recipe("multi-tile airlock assembly",    /obj/structure/door_assembly/multi_tile,                 4, time = 50, one_per_turf = 1, on_floor = 1), \ */
+		new/datum/stack_recipe("multi-tile glass airlock assembly",    /obj/structure/door_assembly/multi_tile/glass,     4, time = 50, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("multi-tile solid airlock assembly",    /obj/structure/door_assembly/multi_tile/solid,     4, time = 50, one_per_turf = 1, on_floor = 1), \
 		), 4), \
 	null, \
 	new/datum/stack_recipe("embedded controller frame",          /obj/item/mounted/frame/airlock_controller,                      1, time = 50, one_per_turf = 0, on_floor = 1), \

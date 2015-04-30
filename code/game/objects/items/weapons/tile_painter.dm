@@ -100,6 +100,9 @@ var/global/list/paint_variants = list(
 		new /datum/paint_info/decal(DIR_ORTHO, "0"),
 	),
 	"Gray" = list(new /datum/paint_info(DIR_ONE,"floor"),
+	new /datum/paint_info(DIR_ONE,"UNSC_Floor"),
+	new /datum/paint_info(DIR_ONE,"UNSC_Up_Down_Tile"),
+	new /datum/paint_info(DIR_ONE,"UNSC_Tile_Sides"),
 	new /datum/paint_info(DIR_ALL,"black"),
 	new /datum/paint_info(DIR_ORTHO,"blackcorner")),
 

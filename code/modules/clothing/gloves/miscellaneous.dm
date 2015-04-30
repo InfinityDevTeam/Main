@@ -45,6 +45,19 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	species_fit = list("Vox")
 
+/obj/item/clothing/gloves/marine
+	desc = "Standard UNSC Marine Corps gloves."
+	name = "UNSC gloves"
+	icon_state = "marine"
+	item_state = "marine_gl"
+	siemens_coefficient = 0.6
+	permeability_coefficient = 0.05
+
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
 	desc = "These tactical gloves are somewhat fire and impact resistant."
 	name = "combat gloves"

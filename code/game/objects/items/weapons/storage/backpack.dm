@@ -125,6 +125,12 @@
 	icon_state = "securitypack"
 	item_state = "securitypack"
 
+/obj/item/weapon/storage/backpack/marine
+	name = "Standard UNSC Marinepack"
+	desc = "The Standard UNSC Marinepack"
+	icon_state = "marine_pack"
+	item_state = "marine_pack"
+
 /obj/item/weapon/storage/backpack/captain
 	name = "captain's backpack"
 	desc = "It's a special backpack made exclusively for Nanotrasen officers."

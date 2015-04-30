@@ -44,6 +44,19 @@
 	siemens_coefficient = 0.5
 	eyeprot = 1
 
+/obj/item/clothing/head/helmet/marine
+	name = "Standard UNSC Helmet"
+	desc = "The Standard UNSC Marine Corps Helmet"
+	icon_state = "marine_helmet"
+	flags = FPRINT
+	item_state = "marine_helmet"
+	armor = list(melee = 80, bullet = 60, laser = 20,energy = 5, bomb = 20, bio = 10, rad = 0)
+	flags_inv = HIDEEARS|HIDEEYES
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
+	siemens_coefficient = 0.5
+	eyeprot = 1
+
 /obj/item/clothing/head/helmet/thunderdome
 	name = "\improper Thunderdome helmet"
 	desc = "<i>'Let the battle commence!'</i>"

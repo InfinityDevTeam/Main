@@ -16,6 +16,40 @@
 	throw_range = 8
 	var/empty = 0
 
+/obj/item/weapon/storage/firstaid/erk
+	name = "ERK"
+	desc = "Emergency Response Kit"
+	icon_state = "ERK"
+	New()
+		..()
+		if (empty) return
+		//default first aid, change if necessay
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/weapon/reagent_containers/hypospray/autoinjector( src )
+		return
+
+/obj/item/weapon/storage/firstaid/medkit
+	name = "Health Kit"
+	desc = "first aid kit containing the standard combat wound treatment"
+	icon_state = "medkit"
+	New()
+		..()
+		if (empty) return
+		//default first aid, change if necessay
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/weapon/reagent_containers/hypospray/autoinjector( src )
+		return
+
 
 /obj/item/weapon/storage/firstaid/fire
 	name = "fire first-aid kit"

@@ -10,7 +10,6 @@
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
-
 /obj/item/clothing/suit/armor/vest
 	name = "armor"
 	desc = "An armored vest that protects against some damage."
@@ -44,6 +43,16 @@
 	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0.5
 
+/obj/item/clothing/suit/armor/marine
+	name = "Standard Marine BDU"
+	desc = "The Standard UNSC Marine Corps Battle Dress Uniform"
+	icon_state = "marine_suit"
+	item_state = "marine_suit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	slowdown = 1
+	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.5
+
 /obj/item/clothing/suit/armor/xcomsquaddie
 	name = "Squaddie Armor"
 	desc = "A suit of armor with heavy padding to protect against projectile and laser attacks. Distributed to shadow organization squaddies."
@@ -51,7 +60,6 @@
 	item_state = "xcomarmor2"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 10, bullet = 50, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/suit/armor/xcomarmor

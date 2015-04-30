@@ -425,6 +425,13 @@
 	_color = "odst"
 	item_state = "odst"
 
+/obj/item/clothing/under/marine
+	name = "Marine Jumpsuit"
+	desc = "Jumpsuit for UNSC Marines."
+	icon_state = "marine_under"
+	_color = "orange"
+	item_state = "marine_under"
+
 /obj/item/clothing/under/russobluecamooutfit
 	name = "russian blue camo"
 	desc = "Drop and give me dvadtsat!"

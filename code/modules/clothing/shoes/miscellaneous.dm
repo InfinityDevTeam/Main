@@ -70,6 +70,15 @@
 	species_fit = list("Vox")
 	siemens_coefficient = 0.6
 
+/obj/item/clothing/shoes/marine
+	name = "Standard UNSC Boots"
+	desc = "The Standard UNSC Marine Corps Boots."
+	icon_state = "marine_shoes"
+	item_state = "marine_shoes"
+	armor = list(melee = 80, bullet = 60, laser = 25,energy = 10, bomb = 30, bio = 10, rad = 0)
+	flags = NOSLIP
+	siemens_coefficient = 0.6
+
 /obj/item/clothing/shoes/combat //Basically SWAT shoes combined with galoshes.
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat"
