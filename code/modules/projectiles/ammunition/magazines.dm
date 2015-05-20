@@ -30,6 +30,19 @@
 /obj/item/ammo_storage/magazine/a12mm/empty
 	starting_ammo = 0
 
+/obj/item/ammo_storage/magazine/battle_rifle_clip
+	name = "magazine (battle rifle)"
+	icon_state = "battle_rifle_clip"
+	origin_tech = "combat=2"
+	ammo_type = "/obj/item/ammo_casing/a12mm"
+	max_ammo = 20
+	multiple_sprites = 1
+	sprite_modulo = 20
+
+
+/obj/item/ammo_storage/magazine/battle_rifle_clip/empty
+	starting_ammo = 0
+
 /obj/item/ammo_storage/magazine/smg9mm
 	name = "magazine (9mm)"
 	icon_state = "smg9mm"

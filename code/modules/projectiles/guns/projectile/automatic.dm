@@ -90,6 +90,61 @@
 		icon_state = "c20r"
 	return
 
+/obj/item/weapon/gun/projectile/automatic/assault_rifle
+	name = "\improper Assault Rifle"
+	desc = "The Standard UNSC Assault Rifle"
+	icon_state = "assault_rifle"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
+	item_state = "assault_rifle"
+	w_class = 3.0
+	max_shells = 20
+	burst_count = 4
+	caliber = list("12mm" = 1)
+	//PLACEHOLDER
+	origin_tech = "combat=5;materials=2;syndicate=8"
+	ammo_type = "/obj/item/ammo_casing/a12mm"
+	mag_type = "/obj/item/ammo_storage/magazine/a12mm"
+	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
+	load_method = 2
+
+	gun_flags = AUTOMAGDROP | EMPTYCASINGS
+
+/obj/item/weapon/gun/projectile/automatic/assault_rifle/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "assault_rifle_full"
+	else
+		icon_state = "assault_rifle"
+	return
+
+
+/obj/item/weapon/gun/projectile/automatic/battle_rifle
+	name = "\improper Battle Rifle"
+	desc = "The Standard UNSC Battle Rifle"
+	icon_state = "battle_rifle"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
+	item_state = "battle_rifle"
+	w_class = 3.0
+	max_shells = 20
+	burst_count = 1
+	caliber = list("12mm" = 1)
+	//PLACEHOLDER
+	origin_tech = "combat=5;materials=2;syndicate=8"
+	ammo_type = "/obj/item/ammo_casing/a12mm"
+	mag_type = "/obj/item/ammo_storage/magazine/battle_rifle_clip"
+	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
+	load_method = 2
+
+	gun_flags = AUTOMAGDROP | EMPTYCASINGS
+
+/obj/item/weapon/gun/projectile/automatic/battle_rifle/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "battle_rifle_full"
+	else
+		icon_state = "battle_rifle"
+	return
+
 /obj/item/weapon/gun/projectile/automatic/xcom
 	name = "\improper Assault Rifle"
 	desc = "A lightweight, fast firing gun, issued to shadow organization members."

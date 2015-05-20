@@ -173,10 +173,10 @@ obj/item/weapon/gun/energy/laser/retro
 	charge_cost = 50
 
 /obj/item/weapon/gun/energy/plasma/pistol
-	name = "plasma pistol"
+	name = "plasma_pistol"
 	desc = "A state of the art pistol utilizing plasma in a uranium-235 lined core to output searing bolts of energy."
-	icon_state = "alienpistol"
-	item_state = null
+	icon_state = "plasma_pistol"
+	item_state = "plasma_pistol"
 	w_class = 2.0
 	projectile_type = /obj/item/projectile/energy/plasma/pistol
 	charge_cost = 50
