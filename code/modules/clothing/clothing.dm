@@ -276,6 +276,7 @@ BLIND     // can't see anything
 	var/list/obj/item/clothing/accessory/accessories = list()
 	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
 	var/sensor_mode = 0
+	var/tear_sound = 'sound/items/poster_ripped.ogg'
 		/*
 		1 = Report living/dead
 		2 = Report detailed damages
@@ -330,7 +331,15 @@ BLIND     // can't see anything
 			if(A.on_accessory_interact(user, 1))
 				return 1
 		return
+	if(user.get_inactive_hand() == src)
+		spawn returnToPool(src)
+		playsound(user, tear_sound, 10, 1)
+		user << "<span class='notice'>You tear [src] into pieces</span>"
+		user.put_in_active_hand(new/obj/item/weapon/rag)
 	return ..()
+
+
+
 
 /obj/item/clothing/under/proc/priority_accessories()
 	if(!accessories.len)

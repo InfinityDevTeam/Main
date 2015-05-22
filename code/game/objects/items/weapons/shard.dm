@@ -3,6 +3,7 @@
  */
 
 /obj/item/weapon/shard
+	var/size = "large"
 	name = "shard"
 	icon = 'icons/obj/shards.dmi'
 	icon_state = "large"
@@ -20,7 +21,8 @@
 
 /obj/item/weapon/shard/New()
 
-	src.icon_state = pick("large", "medium", "small")
+	src.size = pick("large", "medium", "small")
+	src.icon_state = src.size
 	switch(src.icon_state)
 		if("small")
 			src.pixel_x = rand(-12, 12)
@@ -34,6 +36,35 @@
 		else
 	..()
 	return
+
+/obj/item/weapon/shard/shiv
+	name = "Shiv"
+	desc = "A selfbuild shiv, made from a piece of cloth and a glass shard"
+	sharpness = 1.0
+	force = 15
+	icon_state = "shivmedium"
+
+/obj/item/weapon/shard/shiv/New(var/sizeShard)
+/*
+	..()
+	src.icon_state = pick("shivlarge", "shivmedium", "shivsmall")
+*/
+	src.size = size
+	if(sizeShard == "small" || sizeShard == "medium" || sizeShard == "large")
+		src.icon_state = "shiv[sizeShard]"
+	switch(src.size)
+		if("small")
+			src.pixel_x = rand(-12, 12)
+			src.pixel_y = rand(-12, 12)
+		if("medium")
+			src.pixel_x = rand(-8, 8)
+			src.pixel_y = rand(-8, 8)
+		if("large")
+			src.pixel_x = rand(-5, 5)
+			src.pixel_y = rand(-5, 5)
+		else
+	return
+
 
 /obj/item/weapon/shard/plasma
 	name = "plasma shard"
@@ -94,6 +125,13 @@
 			new_item.add_to_stacks(usr)
 			returnToPool(src)
 			return
+	if (istype(W, /obj/item/weapon/rag))
+		var/size = src.size
+		returnToPool(W)
+		user << "<span class='notice'>You wrap the rag around the shard, creating a dangerous weapon!</span>"
+		user.put_in_active_hand(new /obj/item/weapon/shard/shiv(size))
+		returnToPool(src)
+		return
 	return ..()
 
 /obj/item/weapon/shard/Crossed(AM as mob|obj)
