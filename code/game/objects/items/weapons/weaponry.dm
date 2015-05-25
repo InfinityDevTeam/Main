@@ -149,6 +149,19 @@
 	playsound(loc, 'sound/weapons/bloodyslice.ogg', 50, 1, -1)
 	return ..()
 
+/obj/item/weapon/combat_knive
+	name = "combat knive"
+	desc = "The closed quarters combat weapon system, used by the UNSC."
+	icon_state = "combat_knive"
+	item_state = "combat_knive"
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	force = 15
+	w_class = 1
+	throwforce = 10
+	flags = FPRINT
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+
 /obj/item/weapon/harpoon
 	name = "harpoon"
 	sharpness = 1.2

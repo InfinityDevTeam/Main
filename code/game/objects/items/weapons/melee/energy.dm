@@ -3,6 +3,7 @@
 	sharpness = 1.5 //very very sharp
 	heat_production = 3500
 
+
 /obj/item/weapon/melee/energy/suicide_act(mob/user)
 	viewers(user) << pick("\red <b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>", \
 						"\red <b>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</b>")
@@ -123,6 +124,21 @@
 	..()
 	_color = null
 	update_icon()
+
+obj/item/weapon/melee/energy/sword/energy_sword
+	name = "energy sword"
+	desc = "The powerfull energy sword"
+	icon_state = "energy_sword0"
+	base_state = "energy_sword"
+
+/obj/item/weapon/melee/energy/sword/energy_sword/New()
+	..()
+	_color = null
+	update_icon()
+
+/obj/item/weapon/melee/energy/sword/energy_sword/attackby(obj/item/weapon/W, mob/living/user)
+	return
+
 
 /obj/item/weapon/melee/energy/blade
 	name = "energy blade"

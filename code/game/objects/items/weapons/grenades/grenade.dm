@@ -1,6 +1,6 @@
 /obj/item/weapon/grenade
 	name = "grenade"
-	desc = "A hand held grenade, with an adjustable timer."
+	desc = "The standard UNSC M9 HE-DP grenade"
 	w_class = 2.0
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade"
@@ -84,9 +84,12 @@
 
 /obj/item/weapon/grenade/proc/prime()
 //	playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
+	update_mob()
+	explosion(src.loc,1,2,4)
 	var/turf/T = get_turf(src)
 	if(T)
 		T.hotspot_expose(700,125,surfaces=istype(loc,/turf))
+	del(src)
 
 /obj/item/weapon/grenade/proc/update_mob()
 	if(ismob(loc))
