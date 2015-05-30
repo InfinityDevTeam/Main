@@ -239,3 +239,16 @@
 	slowdown = 0
 	armor = list(melee = 70, bullet = 70, laser = 40, energy = 40, bomb = 60, bio = 100, rad = 100)
 
+/obj/item/clothing/suit/armor/marine
+	name = "Marine Armor"
+	desc = "Armor for UNSC Marines."
+	icon_state = "marine"
+	item_state = "marine"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	slowdown = 0
+	armor = list(melee = 45, bullet = 70, laser = 5, energy = 5, bomb = 60, bio = 20, rad = 20)
+
+
