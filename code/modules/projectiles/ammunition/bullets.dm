@@ -10,6 +10,12 @@
 	projectile_type = "/obj/item/projectile/bullet"
 	w_type = RECYK_METAL
 
+/obj/item/ammo_casing/a197
+	desc = "A .197 bullet casing."
+	caliber = ".197"
+	projectile_type = "/obj/item/projectile/bullet"
+	w_type = RECYK_METAL
+
 /obj/item/ammo_casing/a418
 	desc = "A .418 bullet casing."
 	caliber = "357"
@@ -127,6 +133,19 @@
 /obj/item/ammo_casing/a762
 	desc = "A 7.62 bullet casing."
 	caliber = "a762"
+	projectile_type = "/obj/item/projectile/bullet"
+	w_type = RECYK_METAL
+
+/obj/item/ammo_casing/a95
+	desc = "A 9.5 bullet casing."
+	caliber = "a95"
+	projectile_type= "/obj/item/projectile/bullet"
+	w_type = RECYK_METAL
+
+
+/obj/item/ammo_casing/a127
+	desc = "A 12.7 bullet casing."
+	caliber = "a127"
 	projectile_type = "/obj/item/projectile/bullet"
 	w_type = RECYK_METAL
 

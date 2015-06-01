@@ -90,6 +90,32 @@
 		icon_state = "c20r"
 	return
 
+/obj/item/weapon/gun/projectile/automatic/m7smg
+	name = "\improper M7SMG"
+	desc = "The UNSC SMG"
+	icon_state = "m7smg"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
+	item_state = "m7smg"
+	w_class = 3.0
+	max_shells = 60
+	burst_count = 4
+	caliber = list(".197" = 1)
+	origin_tech = "combat=5;materials=2;syndicate=8"
+	ammo_type = "/obj/item/ammo_casing/a197"
+	mag_type = "/obj/item/ammo_storage/magazine/m7smg_clip"
+	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
+	load_method = 2
+
+	gun_flags = AUTOMAGDROP | EMPTYCASINGS
+
+/obj/item/weapon/gun/projectile/automatic/m7smg/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "m7smg_full"
+	else
+		icon_state = "m7smg"
+	return
+
 /obj/item/weapon/gun/projectile/automatic/assault_rifle
 	name = "\improper Assault Rifle"
 	desc = "The Standard UNSC Assault Rifle"
@@ -97,13 +123,13 @@
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
 	item_state = "assault_rifle"
 	w_class = 3.0
-	max_shells = 20
+	max_shells = 32
 	burst_count = 4
-	caliber = list("12mm" = 1)
+	caliber = list("a762" = 1)
 	//PLACEHOLDER
 	origin_tech = "combat=5;materials=2;syndicate=8"
-	ammo_type = "/obj/item/ammo_casing/a12mm"
-	mag_type = "/obj/item/ammo_storage/magazine/a12mm"
+	ammo_type = "/obj/item/ammo_casing/a762"
+	mag_type = "/obj/item/ammo_storage/magazine/ma5"
 	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
 	load_method = 2
 
@@ -125,12 +151,12 @@
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
 	item_state = "battle_rifle"
 	w_class = 3.0
-	max_shells = 20
+	max_shells = 36
 	burst_count = 1
-	caliber = list("12mm" = 1)
+	caliber = list("a95" = 1)
 	//PLACEHOLDER
 	origin_tech = "combat=5;materials=2;syndicate=8"
-	ammo_type = "/obj/item/ammo_casing/a12mm"
+	ammo_type = "/obj/item/ammo_casing/a95"
 	mag_type = "/obj/item/ammo_storage/magazine/battle_rifle_clip"
 	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
 	load_method = 2
