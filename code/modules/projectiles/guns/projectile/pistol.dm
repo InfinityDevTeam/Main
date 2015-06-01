@@ -1,17 +1,72 @@
 /obj/item/weapon/gun/projectile/silenced
 	name = "silenced pistol"
-	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
+	desc = "A small, quiet,  easily concealable gun. Uses .38 rounds."
 	icon_state = "silenced_pistol"
 	item_state = null
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	w_class = 3.0
-	max_shells = 10
-	caliber = list(".45"  = 1)
+	max_shells = 7
+	caliber = list("subsonic"  = 1)
 	silenced = 1
 	origin_tech = "combat=2;materials=2;syndicate=8"
-	ammo_type = "/obj/item/ammo_casing/c45"
-	mag_type = "/obj/item/ammo_storage/magazine/c45"
+	ammo_type = "/obj/item/ammo_casing/c38"
+	mag_type = "/obj/item/ammo_storage/magazine/subsonic"
 	load_method = 2
+
+/obj/item/weapon/gun/projectile/silenced/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "silenced_pistol_full"
+	else
+		icon_state = "silenced_pistol"
+	return
+
+
+/obj/item/weapon/gun/projectile/magnum
+	name = "M6G Magnum"
+	desc = "The standard UNSC Handgun"
+	icon_state = "magnum"
+	item_state = "magnum"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
+	w_class = 3.0
+	max_shells = 8
+	caliber = list("12.7"  = 1)
+	origin_tech = "combat=2;materials=2;syndicate=8"
+	ammo_type = "/obj/item/ammo_casing/12.7"
+	mag_type = "/obj/item/ammo_storage/magazine/magnum_clip"
+	load_method = 2
+
+/obj/item/weapon/gun/projectile/magnum/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "magnum_full"
+	else
+		icon_state = "magnum"
+	return
+
+
+/obj/item/weapon/gun/projectile/socom
+	name = "M6C/SOCOM"
+	desc = "The Handgun used by the UNSC special operations unit."
+	icon_state = "socom"
+	item_state = "socom"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
+	w_class = 3.0
+	max_shells = 12
+	caliber = list("12.7"  = 1)
+	origin_tech = "combat=2;materials=2;syndicate=8"
+	ammo_type = "/obj/item/ammo_casing/12.7"
+	mag_type = "/obj/item/ammo_storage/magazine/socom_clip"
+	load_method = 2
+
+
+/obj/item/weapon/gun/projectile/socom/update_icon()
+	..()
+	if(stored_magazine)
+		icon_state = "socom_full"
+	else
+		icon_state = "socom"
+	return
 
 
 /obj/item/weapon/gun/projectile/deagle

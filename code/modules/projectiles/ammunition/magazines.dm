@@ -34,13 +34,72 @@
 	name = "magazine (battle rifle)"
 	icon_state = "battle_rifle_clip"
 	origin_tech = "combat=2"
-	ammo_type = "/obj/item/ammo_casing/a12mm"
-	max_ammo = 20
+	ammo_type = "/obj/item/ammo_casing/a95"
+	max_ammo = 36
 	multiple_sprites = 1
-	sprite_modulo = 20
-
+	sprite_modulo = 36
 
 /obj/item/ammo_storage/magazine/battle_rifle_clip/empty
+	starting_ammo = 0
+
+/obj/item/ammo_storage/magazine/ma5
+	name = "magazine (ma5)"
+	icon_state = "ma5"
+	origin_tech = "combat=2"
+	ammo_type = "/obj/item/ammo_casing/a762"
+	max_ammo = 32
+	multiple_sprites = 1
+	sprite_modulo = 32
+
+/obj/item/ammo_storage/magazine/ma5/empty
+	starting_ammo = 0
+
+/obj/item/ammo_storage/magazine/magnum_clip
+	name = "magazine(magnum)"
+	icon_state = "magnum_clip"
+	origin_tech = "combat=2"
+	ammo_type ="/obj/item/ammo_casing/a127"
+	max_ammo = 8
+	multiple_sprites = 1
+	sprite_modulo = 8
+
+/obj/item/ammo_storage/magazine/magnum_clip/empty
+	starting_ammo = 0
+
+/obj/item/ammo_storage/magazine/socom_clip
+	name = "magazine(SOCOM)"
+	icon_state = "socom_clip"
+	origin_tech = "combat=2"
+	ammo_type ="/obj/item/ammo_casing/a127"
+	max_ammo = 12
+	multiple_sprites = 1
+	sprite_modulo = 12
+
+/obj/item/ammo_storage/magazine/socom_clip/empty
+	starting_ammo = 0
+
+/obj/item/ammo_storage/magazine/m7smg_clip
+	name = "magazine(M7SMG)"
+	icon_state = "m7smg_clip"
+	origin_tech = "combat=2"
+	ammo_type ="/obj/item/ammo_casing/a197"
+	max_ammo = 60
+	multiple_sprites = 1
+	sprite_modulo = 60
+
+/obj/item/ammo_storage/magazine/m7smg_clip/empty
+	starting_ammo = 0
+
+/obj/item/ammo_storage/magazine/subsonic
+	name = "magazine(.380 Subsonic)"
+	icon_state = "subsonic"
+	origin_tech = "combat=2"
+	ammo_type ="/obj/item/ammo_casing/c38"
+	max_ammo = 7
+	multiple_sprites = 1
+	sprite_modulo = 1
+
+/obj/item/ammo_storage/magazine/socom_clip/empty
 	starting_ammo = 0
 
 /obj/item/ammo_storage/magazine/smg9mm

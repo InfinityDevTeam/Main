@@ -68,6 +68,15 @@
 	origin_tech = "combat=5;materials=2"
 	ammo_type = "/obj/item/ammo_casing/shotgun"
 
+/obj/item/weapon/gun/projectile/shotgun/pump/m45
+	name = "M45 tactical shotgun"
+	icon_state = "m45"
+	item_state = "m45"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
+	max_shells = 6
+	origin_tech = "combat=5;materials=2"
+	ammo_type = "/obj/item/ammo_casing/shotgun"
+
 //this is largely hacky and bad :(	-Pete
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
