@@ -44,8 +44,8 @@ var/global/datum/controller/gameticker/ticker
 #define LOBBY_TICKING_RESTARTED 2
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(\
-	'sound/music/space.ogg',\
-	'sound/music/traitor.ogg',\
+	'sound/music/odst.ogg',\
+	'sound/music/cominghome.ogg',\
 	'sound/music/space_oddity.ogg',\
 	'sound/music/title1.ogg',\
 	'sound/music/title2.ogg',\
