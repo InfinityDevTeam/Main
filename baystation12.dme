@@ -1788,6 +1788,7 @@
 #include "interface\skin.dmf"
 #include "maps\_map.dm"
 #include "maps\tgstation.dm"
+#include "maps\infinity.dmm"
 #include "maps\RandomZLevels\Academy.dm"
 #include "maps\RandomZLevels\challenge.dm"
 #include "maps\RandomZLevels\stationCollision.dm"
