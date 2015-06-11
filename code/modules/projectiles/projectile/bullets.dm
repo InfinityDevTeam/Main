@@ -49,6 +49,12 @@
 	stun = 5
 	weaken = 5
 
+/obj/item/projectile/bullet/tank
+	damage = 18 //20 just seems a bit much
+
+/obj/item/projectile/bullet/synditank
+	damage = 30  //Tank Cannon Stronk!
+
 /obj/item/projectile/bullet/midbullet2
 	damage = 25
 
