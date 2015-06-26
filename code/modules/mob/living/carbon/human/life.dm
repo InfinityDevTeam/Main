@@ -1012,16 +1012,6 @@ var/global/list/organ_damage_overlays = list(
 	return covered
 
 /mob/living/carbon/human/proc/handle_chemicals_in_body()
-	if(reagents)
-
-		var/alien = 0 //Not the best way to handle it, but neater than checking this for every single reagent proc.
-		if(src.species)
-			switch(src.species.type)
-				if(/datum/species/diona)	alien = IS_DIONA
-				if(/datum/species/vox)	alien = IS_VOX
-				if(/datum/species/plasmaman)	alien = IS_PLASMA
-		reagents.metabolize(src,alien)
-
 	var/total_plasmaloss = 0
 	for(var/obj/item/I in src)
 		if(I.contaminated)
@@ -1292,12 +1282,12 @@ var/global/list/organ_damage_overlays = list(
 				spawn()
 					animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff , time = 1, loop = -1)
 					animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, time = 1, loop = -1, easing = BOUNCE_EASING)
-					
+
 					pixel_x_diff = rand(-amplitude, amplitude)
 					pixel_y_diff = rand(-amplitude, amplitude)
 					animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff , time = 1, loop = -1)
 					animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, time = 1, loop = -1, easing = BOUNCE_EASING)
-					
+
 					pixel_x_diff = rand(-amplitude, amplitude)
 					pixel_y_diff = rand(-amplitude, amplitude)
 					animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff , time = 1, loop = -1)

@@ -113,7 +113,7 @@ datum/controller/game_controller/proc/setup()
 */
 datum/controller/game_controller/proc/cachedamageicons()
 	var/mob/living/carbon/human/H = new(locate(1,1,2))
-	var/datum/species/list/slist = list(new /datum/species/human, new /datum/species/vox, new /datum/species/diona)
+	var/datum/species/list/slist = list(new /datum/species/human)
 	var/icon/DI
 	var/species_blood
 	for(var/datum/species/S in slist)
