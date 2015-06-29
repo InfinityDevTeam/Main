@@ -51,9 +51,9 @@
 
 
 
-/datum/job/hop
-	title = "Head of Personnel"
-	flag = HOP
+/datum/job/FO
+	title = "First Officer"
+	flag = FO
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1

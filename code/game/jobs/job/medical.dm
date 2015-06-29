@@ -52,7 +52,7 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	idtype = /obj/item/weapon/card/id/medical
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_paramedic)
 	minimal_access = list(access_medical, access_morgue, access_surgery, access_virology)
 	alt_titles = list("Surgeon","Emergency Physician","Nurse","Virologist")
 
@@ -106,41 +106,6 @@
 		return 1
 
 
-
-//Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
-/datum/job/chemist
-	title = "Chemist"
-	flag = CHEMIST
-	department_flag = MEDSCI
-	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the chief medical officer"
-	selection_color = "#ffeef0"
-	idtype = /obj/item/weapon/card/id/medical
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_chemistry)
-	alt_titles = list("Pharmacist")
-
-	pdaslot=slot_belt
-	pdatype=/obj/item/device/pda/chemist
-
-	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
-		H.equip_or_collect(new /obj/item/device/radio/headset/headset_med(H), slot_ears)
-		switch(H.mind.role_alt_title)
-			if("Chemist")
-				H.equip_or_collect(new /obj/item/clothing/under/rank/chemist(H), slot_w_uniform)
-			if("Pharmacist")
-				H.equip_or_collect(new /obj/item/clothing/under/rank/pharma(H), slot_w_uniform)
-		H.equip_or_collect(new /obj/item/clothing/shoes/white(H), slot_shoes)
-		//H.equip_or_collect(new /obj/item/device/pda/chemist(H), slot_belt)
-		H.equip_or_collect(new /obj/item/clothing/suit/storage/labcoat/chemist(H), slot_wear_suit)
-		if(H.backbag == 1)
-			H.equip_or_collect(new H.species.survival_gear(H), slot_r_hand)
-		else
-			H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
-		return 1
 
 /datum/job/geneticist
 	title = "Geneticist"
