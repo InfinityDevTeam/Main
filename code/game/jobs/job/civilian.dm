@@ -149,6 +149,7 @@
 			H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
 		return 1
 
+
 /datum/job/janitor
 	title = "Janitor"
 	flag = JANITOR

@@ -1,5 +1,5 @@
 /datum/job/chief_engineer
-	title = "Chief Engineer"
+	title = "Chief Tech Officer"
 	flag = CHIEF
 	department_flag = ENGSEC
 	faction = "Station"
@@ -45,7 +45,7 @@
 
 
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Tech Officer"
 	flag = ENGINEER
 	department_flag = ENGSEC
 	faction = "Station"
