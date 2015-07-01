@@ -24,6 +24,13 @@
 		if(updating)
 			src.updateDialog()
 
+	attack_ai(mob/user)
+		attack_hand(user)
+
+	attack_hand(mob/user)
+		add_fingerprint(user)
+		interact(user)
+
 	interact(mob/user)
 		if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
 			if (!istype(user, /mob/living/silicon))
