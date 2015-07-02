@@ -30,3 +30,6 @@ info.json
 /analysis
 /code-fixed
 *.json
+
+#server created data
+/data/*/*
