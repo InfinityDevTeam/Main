@@ -33,3 +33,6 @@ info.json
 
 #server created data
 /data/*/*
+
+#Thumbs.db
+*Thumbs.db
