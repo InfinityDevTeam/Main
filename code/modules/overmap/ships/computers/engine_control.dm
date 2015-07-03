@@ -3,7 +3,7 @@
 /obj/machinery/computer/engines
 	name = "engine control console"
 	icon_state = "engine1"
-	var/state = "status"
+	state = "status"
 	var/list/engines = list()
 	var/obj/effect/map/ship/linked
 
