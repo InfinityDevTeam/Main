@@ -525,7 +525,7 @@
 				if("renders_url")
 					renders_url = value
 				if("use_overmap")
-					user_overmap = 1
+					use_overmap = 1
 				else
 					diary << "Unknown setting in configuration: '[name]'"
 
