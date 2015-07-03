@@ -164,6 +164,8 @@
 
 	var/default_ooc_color = "#002eb8"
 
+	var/use_overmap = 0
+
 /datum/configuration/New()
 	. = ..()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -479,7 +481,7 @@
 
 				if("comms_password")
 					config.comms_password = value
-					
+
 				if("paperwork_library")
 					config.paperwork_library = 1
 
@@ -522,6 +524,8 @@
 					map_voting = 1
 				if("renders_url")
 					renders_url = value
+				if("use_overmap")
+					use_overmap = 1
 				else
 					diary << "Unknown setting in configuration: '[name]'"
 
