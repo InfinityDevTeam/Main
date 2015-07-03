@@ -18,6 +18,7 @@
 #define FILE_DIR "code/unused/goonheist"
 #define FILE_DIR "code/WorkInProgress"
 #define FILE_DIR "code/WorkInProgress/Cael_Aislinn"
+#define FILE_DIR "code/WorkInProgress/Cael_Aislinn/Rust"
 #define FILE_DIR "code/WorkInProgress/Cael_Aislinn/ShieldGen"
 #define FILE_DIR "code/WorkInProgress/Cael_Aislinn/Supermatter"
 #define FILE_DIR "code/WorkInProgress/Susan"
