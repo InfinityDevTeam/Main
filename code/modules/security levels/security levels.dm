@@ -60,7 +60,7 @@
 						FA.overlays += image('icons/obj/monitors.dmi', "overlay_red")
 
 			if(SEC_LEVEL_DELTA)
-				world << "<font size=4 color='red'>Attention! Delta security level reached!</font>"
+				world << "<font size=4 color='red'>Attention! Code Black! Martial law is now in effect!</font>"
 				world << "<font color='red'>[config.alert_desc_delta]</font>"
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/machinery/firealarm/FA in machines)

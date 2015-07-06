@@ -142,7 +142,7 @@
 	icon = 'icons/obj/items.dmi'
 
 /obj/item/weapon/disk/nuclear
-	name = "nuclear authentication disk"
+	name = "anti-matter charge activation disk"
 	desc = "Better keep this safe."
 	icon_state = "nucleardisk"
 	item_state = "card-id"
