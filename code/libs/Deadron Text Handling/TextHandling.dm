@@ -154,27 +154,27 @@ proc
     /////////////////////
 	// Prefix checking //
 	/////////////////////
-	dd_hasprefix(text, prefix)
+	/*dd_hasprefix(text, prefix)
 		var/start = 1
 		var/end = lentext(prefix) + 1
-		return findtext(text, prefix, start, end)
+		return findtext(text, prefix, start, end)*/
 
-	dd_hasPrefix(text, prefix)
+	/*dd_hasPrefix(text, prefix)
 		var/start = 1
 		var/end = lentext(prefix) + 1
-		return findText(text, prefix, start, end)
+		return findText(text, prefix, start, end)*/
 
 
     /////////////////////
 	// Suffix checking //
 	/////////////////////
-	dd_hassuffix(text, suffix)
+	/*dd_hassuffix(text, suffix)
 		var/start = length(text) - length(suffix)
-		if (start) return findtext(text, suffix, start)
+		if (start) return findtext(text, suffix, start)*/
 
-	dd_hasSuffix(text, suffix)
+	/*dd_hasSuffix(text, suffix)
 		var/start = length(text) - length(suffix)
-		if (start) return findText(text, suffix, start)
+		if (start) return findText(text, suffix, start)*/
 
 	/////////////////////////////
 	// Turning text into lists //
@@ -231,7 +231,7 @@ proc
 			newText += "[the_list[count]]"
 		return newText
 
-	dd_centertext(message, length)
+	/*dd_centertext(message, length)
 		var/new_message = message
 		var/size = length(message)
 		if (size == length)
@@ -255,15 +255,15 @@ proc
 		var/spaces = ""
 		for (var/count = 1, count <= delta, count++)
 			spaces += " "
-		return spaces + new_message + spaces
+		return spaces + new_message + spaces*/
 
-	dd_limittext(message, length)
+	/*dd_limittext(message, length)
 		// Truncates text to limit if necessary.
 		var/size = length(message)
 		if (size <= length)
 			return message
 		else
-			return copytext(message, 1, length + 1)
+			return copytext(message, 1, length + 1)*/
 
 /***
 #define MT_BOL	0x80 | '^'	// beginning of line
