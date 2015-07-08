@@ -12,6 +12,7 @@
 	var/datum/data/record/active2
 	var/temp
 	var/balance = 0
+	var/obj/machinery/account_database/linked_db
 
 /datum/computer/file/computer_program/atm/return_text()
 	if(..())
@@ -42,6 +43,15 @@
 /datum/computer/file/computer_program/atm/Topic(href, href_list)
 	if(..())
 		return
+	for(var/obj/machinery/account_database/DB in account_DBs)
+		//Checks for a database on its Z-level, else it checks for a database at the main Station.
+		if((DB.z == src.z) || (DB.z == STATION_Z))
+			if(!(DB.stat & NOPOWER) && DB.activated )//If the database if damaged or not powered, people won't be able to use the EFTPOS anymore
+				linked_db = DB
+				break
+	if (!linked_db)
+		src.temp = text("ERROR: Unable to link to account database")
+		return
 	if (!( data_core.general.Find(src.active1) ))
 		src.active1 = null
 	if (!( data_core.medical.Find(src.active2) ))
@@ -64,12 +74,13 @@
 				src.authenticated = src.master.authid.registered
 				src.rank = src.master.authid.assignment
 				src.screen = 1
-				if(src.master.pincode == getPin(src.master.authid.originalckey))
+				var/accountAccess = linked_db.attempt_account_access(src.master.authid.associated_account_number, src.master.pincode, 2)
+				if(accountAccess)
 					src.pinauthed = 1
+				else
+					src.temp = text("ERROR: Pin incorrect!")
+					return
 	if (src.authenticated && src.pinauthed)
-		if(src.master.pincode != getPin(src.master.authid.originalckey))
-			src.temp = text("ERROR: PIN incorrect.")
-			return
 		//verify existence of bank account
 		//world << "\green [src.getBalance(src.master.authid.originalckey)]"
 		if(src.getBalance(src.master.authid.originalckey))
@@ -86,7 +97,7 @@
 			return
 
 		if (href_list["balance"])
-			src.temp = text("You have Ð[balance] on your account.<br>There is Ð[src.master.moneyinserted] in the ATM ready to be deposited.<br>")
+			src.temp = text("You have þ[balance] on your account.<br>There is þ[src.master.moneyinserted] in the ATM ready to be deposited.<br>")
 
 		if (href_list["withdraw"])
 			var/mvalidate = input("How much money would you like to withdraw?", "ATM - Withdraw", null) as num
@@ -95,20 +106,17 @@
 					src.temp = text("Error: Insufficient funds or bank account nonexistent.")
 				else
 					balance = src.getBalance(src.master.authid.originalckey)
-					src.temp = text("Withdrawal of Ð[mvalidate] successful.<br>You now have Ð[balance] on your account.<br>")
-					playsound(src.master.loc, 'atm_01.ogg', 55, 0)
+					src.temp = text("Withdrawal of þ[mvalidate] successful.<br>You now have þ[balance] on your account.<br>")
+					//playsound(src.master.loc, 'atm_01.ogg', 55, 0)
 					sleep(10)
 
-					var/obj/item/weapon/money/spacecash = new /obj/item/weapon/money(src.master.loc)
-					spacecash.name = "Ð[mvalidate]"
-					spacecash.value = text2num(mvalidate)
-					spacecash.currency = "Ð"
+					spawn_money(mvalidate, src.master.loc)
 
 		if (href_list["deposit"])
 			if(src.master.moneyinserted != 0)
 				src.doTransaction(src.master.authid.originalckey,text2num(src.master.moneyinserted),"ATM Deposit")
 				balance = src.getBalance(src.master.authid.originalckey)
-				src.temp = text("Deposit of Ð[src.master.moneyinserted] successful.<br>You now have Ð[balance] on your account.<br>")
+				src.temp = text("Deposit of þ[src.master.moneyinserted] successful.<br>You now have þ[balance] on your account.<br>")
 				src.master.moneyinserted = 0
 			else
 				src.temp = text("Please insert some money into the machine first.<br>")

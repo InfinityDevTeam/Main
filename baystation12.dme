@@ -1065,6 +1065,7 @@
 #include "code\modules\detectivework\evidence.dm"
 #include "code\modules\detectivework\footprints_and_rag.dm"
 #include "code\modules\Economy\Accounts.dm"
+#include "code\modules\Economy\cash.dm"
 #include "code\modules\Economy\Economy.dm"
 #include "code\modules\Economy\Economy_Events.dm"
 #include "code\modules\Economy\Economy_Events_Mundane.dm"
