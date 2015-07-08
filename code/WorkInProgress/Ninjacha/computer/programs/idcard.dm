@@ -117,7 +117,13 @@
 				if(t1 == "Custom")
 					t1 = input("Enter a custom job assignment.","Assignment")
 				else
-					src.master.auxid.access = get_access(t1)
+					var/datum/job/jobdatum
+					for(var/jobtype in typesof(/datum/job))
+						var/datum/job/J = new jobtype
+						if(ckey(J.title) == ckey(t1))
+							jobdatum = J
+							break
+					src.master.auxid.access = jobdatum.get_access()
 				if (src.master.auxid)
 					src.master.auxid.assignment = t1
 		if (href_list["reg"])
