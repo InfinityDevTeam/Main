@@ -3,7 +3,7 @@
 
 /obj/machinery/newcomputer
 	name = "computer"
-	icon = 'icons/obj/computer.dmi'
+	icon = 'icons/obj/newcomputer.dmi'
 	icon_state = "off"
 	density = 1
 	anchored = 1.0
