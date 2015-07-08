@@ -908,6 +908,7 @@
 #include "code\libs\db\constants.dm"
 #include "code\libs\db\core.dm"
 #include "code\libs\db\db.dm"
+#include "code\libs\Deadron Text Handling\TextHandling.dm"
 #include "code\libs\Get Flat Icon\Get Flat Icon.dm"
 #include "code\libs\IconProcs\IconProcs.dm"
 #include "code\libs\s_html\hexadecimal.dm"
