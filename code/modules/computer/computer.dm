@@ -3,8 +3,13 @@
 
 /obj/machinery/newcomputer
 	name = "computer"
+<<<<<<< HEAD
 	icon = 'icons/obj/newcomputer.dmi'
 	icon_state = "off"
+=======
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "command0"
+>>>>>>> origin/master
 	density = 1
 	anchored = 1.0
 	emagged = 0
@@ -76,7 +81,7 @@
 	else
 		spawn(rand(0, 15))
 			//icon_state = "c_unpowered"
-			icon_state = "off" + ((stat & BROKEN) ? "b" : "")
+			icon_state = "command0" + ((stat & BROKEN) ? "b" : "")
 			stat |= NOPOWER
 			overlays = null
 
@@ -162,7 +167,7 @@
 
 	screen = ""
 	on = 0
-	icon_state = "off" + ((stat & BROKEN) ? "b" : "")
+	icon_state = "command0" + ((stat & BROKEN) ? "b" : "")
 
 
 /obj/machinery/newcomputer/proc/crash()
@@ -244,13 +249,13 @@
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	interact(user)
+	interact_computer(user)
 
 /obj/machinery/newcomputer/attack_hand(mob/user as mob)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	interact(user)
+	interact_computer(user)
 
 /obj/machinery/newcomputer/proc/interact_computer(mob/user)
 	if(!on)
@@ -270,7 +275,7 @@
 		if(istype(HW,/obj/item/weapon/circuitboard/peripherals/floppy))
 			if (HW:disk)
 				if(istype(usr,/mob/living/carbon/human) && !usr.get_active_hand())
-					usr.put_in_hands
+					usr.put_in_hands()
 				else
 					HW:disk.loc = get_turf(src)
 				HW:disk = null
