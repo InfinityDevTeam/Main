@@ -3,13 +3,10 @@
 
 /obj/machinery/newcomputer
 	name = "computer"
-<<<<<<< HEAD
 	icon = 'icons/obj/newcomputer.dmi'
 	icon_state = "off"
-=======
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "command0"
->>>>>>> origin/master
 	density = 1
 	anchored = 1.0
 	emagged = 0
