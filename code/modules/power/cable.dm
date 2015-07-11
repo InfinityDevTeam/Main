@@ -144,6 +144,13 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 
 	if(istype(W, /obj/item/weapon/wirecutters))
+
+///// Z-Level Stuff
+		if(src.d1 == 12 || src.d2 == 12)
+			user << "<span class='warning'>You must cut this cable from above.</span>"
+			return
+///// Z-Level Stuff
+
 		if(shock(user, 50))
 			return
 
@@ -154,6 +161,17 @@ By design, d1 is the smallest direction and d2 is the highest
 
 		for(var/mob/O in viewers(src, null))
 			O.show_message("\red [user] cuts the cable.", 1)
+
+///// Z-Level Stuff
+		if(src.d1 == 11 || src.d2 == 11)
+			var/turf/controllerlocation = locate(1, 1, z)
+			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+				if(controller.down)
+					var/turf/below = locate(src.x, src.y, controller.down_target)
+					for(var/obj/structure/cable/c in below)
+						if(c.d1 == 12 || c.d2 == 12)
+							c.Del()
+///// Z-Level Stuff
 
 		//investigate_log("was cut by [key_name(usr, usr.client)] in [user.loc.loc]","wires")
 
@@ -377,6 +395,20 @@ By design, d1 is the smallest direction and d2 is the highest
 	. = list() // this will be a list of all connected power objects without a powernet
 	var/turf/T
 
+///// Z-Level Stuff
+	if (d1 == 11 || d1 == 12)
+		var/turf/controllerlocation = locate(1, 1, z)
+		for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+			if(controller.up && d1 == 12)
+				T = locate(src.x, src.y, controller.up_target)
+				if(T)
+					. += power_list(T, src, 11, 1)
+			if(controller.down && d1 == 11)
+				T = locate(src.x, src.y, controller.down_target)
+				if(T)
+					. += power_list(T, src, 12, 1)
+///// Z-Level Stuff
+
 	// get matching cables from the first direction
 	if(d1) // if not a node cable
 		T = get_step(src, d1)
@@ -392,6 +424,20 @@ By design, d1 is the smallest direction and d2 is the highest
 			. += power_list(T, src, d1 ^ 12, powernetless_only) // get diagonally matching cables
 
 	. += power_list(loc, src, d1, powernetless_only) // get on turf matching cables
+
+///// Z-Level Stuff
+	if(d2 == 11 || d2 == 12)
+		var/turf/controllerlocation = locate(1, 1, z)
+		for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+			if(controller.up && d2 == 12)
+				T = locate(src.x, src.y, controller.up_target)
+				if(T)
+					. += power_list(T, src, 11, 1)
+			if(controller.down && d2 == 11)
+				T = locate(src.x, src.y, controller.down_target)
+				if(T)
+					. += power_list(T, src, 12, 1)
+///// Z-Level Stuff
 
 	// do the same on the second direction (which can't be 0)
 	T = get_step(src, d2)
