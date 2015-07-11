@@ -2,8 +2,8 @@
 	name = "open space"
 	intact = 0
 	density = 0
-	icon_state = "black"
-	pathweight = 100000 //Seriously, don't try and path over this one numbnuts
+	icon_state = "fullblack"
+	//pathweight = 100000 //Seriously, don't try and path over this one numbnuts
 	var/icon/darkoverlays = null
 	var/turf/floorbelow
 	var/list/overlay_references
@@ -37,9 +37,10 @@
 						if(istype(A, /obj/machinery/atmospherics/pipe/zpipe/up) && istype(AM,/obj/item/pipe))
 							blocked = 1
 							break
-						if(istype(A, /obj/structure/disposalpipe/up) && istype(AM,/obj/item/pipe))
+						#warn Z-Disposal pipes need to be fixed!
+						/*if(istype(A, /obj/structure/disposalpipe/up) && istype(AM,/obj/item/pipe))
 							blocked = 1
-							break
+							break*/
 						if(istype(A, /obj/multiz/stairs))
 							soft = 1
 							//dont break here, since we still need to be sure that it isnt blocked
@@ -118,7 +119,7 @@
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			var/obj/item/stack/tile/plasteel/S = C
-			if (S.get_amount() < 1)
+			if (S.amount < 1)
 				return
 			del(L)
 			playsound(src.loc, 'sound/weapons/Genhit.ogg', 50, 1)

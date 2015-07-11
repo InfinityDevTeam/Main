@@ -2,7 +2,7 @@
 // parent class for pipes //
 ////////////////////////////
 obj/machinery/atmospherics/pipe/zpipe
-		icon = 'icons/obj/structures.dmi'
+		icon = 'code/TriDimension/multiz_pipe.dmi'
 		icon_state = "up"
 
 		name = "upwards pipe"
@@ -84,9 +84,9 @@ obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 
 obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
 	if(dir==3)
-		set_dir(1)
+		dir = 1
 	else if(dir==12)
-		set_dir(4)
+		dir = 4
 
 obj/machinery/atmospherics/pipe/zpipe/Del()
 	if(node1)
@@ -117,7 +117,7 @@ obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/refe
 // the elusive up pipe //
 /////////////////////////
 obj/machinery/atmospherics/pipe/zpipe/up
-		icon = 'icons/obj/structures.dmi'
+		icon = 'code/TriDimension/multiz_pipe.dmi'
 		icon_state = "up"
 
 		name = "upwards pipe"
@@ -125,18 +125,7 @@ obj/machinery/atmospherics/pipe/zpipe/up
 
 obj/machinery/atmospherics/pipe/zpipe/up/initialize()
 	normalize_dir()
-	var/node1_dir
-
-	for(var/direction in cardinal)
-		if(direction&initialize_directions)
-			if (!node1_dir)
-				node1_dir = direction
-
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
-		if(target.initialize_directions & get_dir(target,src))
-			if (check_connect_types(target,src))
-				node1 = target
-				break
+	findAllConnections(initialize_directions)
 
 	var/turf/controllerlocation = locate(1, 1, src.z)
 	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
@@ -145,9 +134,8 @@ obj/machinery/atmospherics/pipe/zpipe/up/initialize()
 			if(above)
 				for(var/obj/machinery/atmospherics/target in above)
 					if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/down))
-						if (check_connect_types(target,src))
-							node2 = target
-							break
+						node2 = target
+						break
 
 
 	var/turf/T = src.loc			// hide if turf is not intact
@@ -158,7 +146,7 @@ obj/machinery/atmospherics/pipe/zpipe/up/initialize()
 ///////////////////////
 
 obj/machinery/atmospherics/pipe/zpipe/down
-		icon = 'icons/obj/structures.dmi'
+		icon = 'code/TriDimension/multiz_pipe.dmi'
 		icon_state = "down"
 
 		name = "downwards pipe"
@@ -166,18 +154,9 @@ obj/machinery/atmospherics/pipe/zpipe/down
 
 obj/machinery/atmospherics/pipe/zpipe/down/initialize()
 	normalize_dir()
-	var/node1_dir
+	//var/node1_dir
 
-	for(var/direction in cardinal)
-		if(direction&initialize_directions)
-			if (!node1_dir)
-				node1_dir = direction
-
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
-		if(target.initialize_directions & get_dir(target,src))
-			if (check_connect_types(target,src))
-				node1 = target
-				break
+	findAllConnections(initialize_directions)
 
 	var/turf/controllerlocation = locate(1, 1, src.z)
 	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
@@ -186,9 +165,8 @@ obj/machinery/atmospherics/pipe/zpipe/down/initialize()
 			if(below)
 				for(var/obj/machinery/atmospherics/target in below)
 					if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/up))
-						if (check_connect_types(target,src))
-							node2 = target
-							break
+						node2 = target
+						break
 
 
 	var/turf/T = src.loc			// hide if turf is not intact
@@ -199,37 +177,33 @@ obj/machinery/atmospherics/pipe/zpipe/down/initialize()
 ///////////////////////
 
 obj/machinery/atmospherics/pipe/zpipe/up/scrubbers
-	icon_state = "up-scrubbers"
+	icon_state = "up"
 	name = "upwards scrubbers pipe"
 	desc = "A scrubbers pipe segment to connect upwards."
-	connect_types = CONNECT_TYPE_SCRUBBER
 	layer = 2.38
-	icon_connect_type = "-scrubbers"
 	color = PIPE_COLOR_RED
+	_color = "red"
 
 obj/machinery/atmospherics/pipe/zpipe/up/supply
-	icon_state = "up-supply"
+	icon_state = "up"
 	name = "upwards supply pipe"
 	desc = "A supply pipe segment to connect upwards."
-	connect_types = CONNECT_TYPE_SUPPLY
 	layer = 2.39
-	icon_connect_type = "-supply"
 	color = PIPE_COLOR_BLUE
+	_color = "blue"
 
 obj/machinery/atmospherics/pipe/zpipe/down/scrubbers
-	icon_state = "down-scrubbers"
+	icon_state = "down"
 	name = "downwards scrubbers pipe"
 	desc = "A scrubbers pipe segment to connect downwards."
-	connect_types = CONNECT_TYPE_SCRUBBER
 	layer = 2.38
-	icon_connect_type = "-scrubbers"
 	color = PIPE_COLOR_RED
+	_color = "red"
 
 obj/machinery/atmospherics/pipe/zpipe/down/supply
-	icon_state = "down-supply"
+	icon_state = "down"
 	name = "downwards supply pipe"
 	desc = "A supply pipe segment to connect downwards."
-	connect_types = CONNECT_TYPE_SUPPLY
 	layer = 2.39
-	icon_connect_type = "-supply"
 	color = PIPE_COLOR_BLUE
+	_color = "blue"
