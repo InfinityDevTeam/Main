@@ -36,3 +36,6 @@ info.json
 
 #Thumbs.db
 *Thumbs.db
+
+#Map backups
+maps/*.backup
