@@ -146,31 +146,60 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 				user << "There's already a cable at that position."
 				return
 
-		var/obj/structure/cable/C = getFromPool(/obj/structure/cable, F)
-		C.cableColor(_color)
+///// Z-Level Stuff
+		// check if the target is open space
+		if(istype(F, /turf/simulated/floor/open))
+			for(var/obj/structure/cable/LC in F)
+				if((LC.d1 == dirn && LC.d2 == 11 ) || ( LC.d2 == dirn && LC.d1 == 11))
+					user << "<span class='warning'>There's already a cable at that position.</span>"
+					return
+			var/turf/simulated/floor/open/temp = F
+			var/obj/structure/cable/C = new(F)
+			var/obj/structure/cable/D = new(temp.floorbelow)
+			C.cableColor(color)
+			C.d1 = 11
+			C.d2 = dirn
+			C.add_fingerprint(user)
+			C.update_icon()
+			var/datum/powernet/PN = new()
+			PN.add_cable(C)
+			C.mergeConnectedNetworks(C.d2)
+			C.mergeConnectedNetworksOnTurf()
+			D.cableColor(color)
+			D.d1 = 12
+			D.d2 = 0
+			D.add_fingerprint(user)
+			D.update_icon()
+			PN.add_cable(D)
+			D.mergeConnectedNetworksOnTurf()
+		// do the normal stuff
+		else
+///// Z-Level Stuff
+			var/obj/structure/cable/C = getFromPool(/obj/structure/cable, F)
+			C.cableColor(_color)
 
-		// set up the new cable
-		C.d1 = 0 // it's a O-X node cable
-		C.d2 = dirn
-		C.add_fingerprint(user)
-		C.update_icon()
+			// set up the new cable
+			C.d1 = 0 // it's a O-X node cable
+			C.d2 = dirn
+			C.add_fingerprint(user)
+			C.update_icon()
 
-		//create a new powernet with the cable, if needed it will be merged later
-		var/datum/powernet/PN = getFromDPool(/datum/powernet)
-		PN.add_cable(C)
+			//create a new powernet with the cable, if needed it will be merged later
+			var/datum/powernet/PN = getFromDPool(/datum/powernet)
+			PN.add_cable(C)
 
-		C.mergeConnectedNetworks(C.d2)		// merge the powernet with adjacents powernets
-		C.mergeConnectedNetworksOnTurf()	// merge the powernet with on turf powernets
+			C.mergeConnectedNetworks(C.d2)		// merge the powernet with adjacents powernets
+			C.mergeConnectedNetworksOnTurf()	// merge the powernet with on turf powernets
 
-		if(C.d2 & (C.d2 - 1)) // if the cable is layed diagonally, check the others 2 possible directions
-			C.mergeDiagonalsNetworks(C.d2)
+			if(C.d2 & (C.d2 - 1)) // if the cable is layed diagonally, check the others 2 possible directions
+				C.mergeDiagonalsNetworks(C.d2)
 
-		use(1)
+			use(1)
 
-		if(C.shock(user, 50))
-			if(prob(50)) // fail
-				getFromPool(/obj/item/stack/cable_coil, C.loc)
-				returnToPool(C)
+			if(C.shock(user, 50))
+				if(prob(50)) // fail
+					getFromPool(/obj/item/stack/cable_coil, C.loc)
+					returnToPool(C)
 
 // called when cable_coil is click on an installed obj/cable
 // or click on a turf that already contains a "node" cable
