@@ -37,10 +37,9 @@
 						if(istype(A, /obj/machinery/atmospherics/pipe/zpipe/up) && istype(AM,/obj/item/pipe))
 							blocked = 1
 							break
-						#warn Z-Disposal pipes need to be fixed!
-						/*if(istype(A, /obj/structure/disposalpipe/up) && istype(AM,/obj/item/pipe))
+						if(istype(A, /obj/structure/disposalpipe/up) && istype(AM,/obj/item/pipe))
 							blocked = 1
-							break*/
+							break
 						if(istype(A, /obj/multiz/stairs))
 							soft = 1
 							//dont break here, since we still need to be sure that it isnt blocked
