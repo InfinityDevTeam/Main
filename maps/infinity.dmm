@@ -18,7 +18,7 @@
 "ar" = (/obj/structure/stool/bed/chair{dir = 1},/turf/simulated/floor/airless,/area)
 "as" = (/turf/simulated/floor/airless,/area)
 "at" = (/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/airless,/area)
-"au" = (/obj/machinery/computer/mining_shuttle,/turf/simulated/floor/airless,/area)
+"au" = (/obj/machinery/computer/helm,/turf/simulated/floor/airless,/area)
 "av" = (/obj/machinery/computer/station_alert,/turf/simulated/floor/airless,/area)
 "aw" = (/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/airless,/area)
 "ax" = (/turf/simulated/floor,/area)
