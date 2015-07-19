@@ -121,7 +121,7 @@
 "cq" = (/obj/structure/stool/bed/chair{dir = 8},/turf/simulated/floor/carpet,/area)
 "cr" = (/obj/structure/disposalpipe/segment,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/carpet,/area)
 "cs" = (/obj/structure/filingcabinet/chestdrawer,/obj/item/device/radio/intercom{dir = 8; name = "Station Intercom (General)"; pixel_x = -28},/turf/simulated/floor/carpet,/area)
-"ct" = (/obj/machinery/requests_console{announcementConsole = 1; department = "Head of Personnel's Desk"; departmentType = 5; name = "Head of Personnel RC"; pixel_y = -30},/obj/machinery/camera{c_tag = "Head of Personnel's Office"; dir = 1},/turf/simulated/floor/carpet,/area)
+"ct" = (/obj/machinery/requests_console{announcementConsole = 1; department = "Head of Personnel's Desk"; departmentType = 5; name = "Head of Personnel RC"; pixel_y = -30},/obj/machinery/camera{c_tag = "Head of Personnel's Office"; dir = 1},/obj/machinery/computer/mining_shuttle,/turf/simulated/floor/carpet,/area)
 "cu" = (/obj/structure/table,/obj/machinery/recharger,/turf/simulated/floor/carpet,/area)
 "cv" = (/obj/structure/flora/pottedplant/random,/turf/simulated/floor/carpet,/area)
 "cw" = (/obj/machinery/light_switch{pixel_x = 27},/obj/machinery/light{dir = 4},/obj/structure/disposalpipe/segment,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/carpet,/area)
