@@ -1,3 +1,19 @@
+//overmap stuff
+/obj/effect/mapinfo/sector/academy
+	name = "Cultist Academy"
+	shipname = "Cultist Academy"
+	obj_type = /obj/effect/map/sector/academy
+	mapx = 6
+	mapy = 66
+	landing_area = /area/awaymission/academy/incoming
+
+/obj/effect/map/sector/academy
+	name = "Cultist Academy"
+	desc = "A dark place full of ancient dark arts. You can barely bring yourself to look at it on the helm display."
+	icon = 'icons/obj/cult.dmi'
+	icon_state = "pylon"
+
+
 //Academy Areas
 
 /area/awaymission/academy
@@ -19,6 +35,10 @@
 /area/awaymission/academy/academygate
 	name = "\improper Academy Gateway"
 	icon_state = "away4"
+
+/area/awaymission/academy/incoming
+	name = "\improper Academy Shuttle Dock"
+	icon_state = "shuttle"
 
 //Academy Items
 

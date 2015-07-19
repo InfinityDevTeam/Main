@@ -1806,11 +1806,12 @@
 #include "code\ZAS\Turf.dm"
 #include "code\ZAS\Zone.dm"
 #include "interface\interface.dm"
-#include "interface\port stuff\skin.dmf"
+#include "interface\skin.dmf"
 #include "maps\_map.dm"
 #include "maps\tgstation.dm"
 #include "maps\RandomZLevels\Academy.dm"
 #include "maps\RandomZLevels\challenge.dm"
 #include "maps\RandomZLevels\stationCollision.dm"
 #include "maps\RandomZLevels\wildwest.dm"
+#include "maps\RandomZLevels\Academy.dmm"
 // END_INCLUDE
