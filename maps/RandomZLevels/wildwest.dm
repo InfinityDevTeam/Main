@@ -4,6 +4,23 @@
  *		Meat Grinder
  */
 
+//overmap
+/obj/effect/mapinfo/sector/wildwest
+	name = "The Wild West"
+	shipname = "The Wild West"
+	obj_type = /obj/effect/map/sector/wildwest
+	landing_area = /area/awaymission/wwlanding
+
+/obj/effect/map/sector/wildwest
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "s357"
+	name = "The New West"
+	desc = "Similar to Earth's old Wild West, but much more nefarious..."
+
+/area/awaymission/wwlanding
+	name = "\improper Wild West Landing Site"
+	icon_state = "shuttle"
+
 /*
  * Wish Granter
  */
