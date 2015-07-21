@@ -1,6 +1,6 @@
-/datum/game_mode/insurrect
+/datum/game_mode/insurrection
 	name = "Insurrection"
-	config_tag = "insr"
+	config_tag = "insurrection"
 	restricted_jobs = list("Cyborg","Mobile MMI")//They are part of the AI if he is traitor so are they, they use to get double chances
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")//AI", Currently out of the list as malf does not work for shit
 	required_players = 0
@@ -14,10 +14,8 @@
 	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
 	var/const/waittime_h = 1800 //upper bound on time before intercept arrives (in tenths of seconds)
 
-	var/traitors_possible = 4 //hard limit on traitors if scaling is turned off
-	var/const/traitor_scaling_coeff = 5.0 //how much does the amount of players get divided by to determine traitors
 
-/datum/game_mode/insurrect/announce()
+/datum/game_mode/insurrection/announce()
 	world << "<B>The current game mode is - Insurrection!</B>"
 	world << "<B>There is an Insurrection going on!</B>"
 
@@ -35,9 +33,9 @@
 	var/num_insurrectionists = 1
 
 	if(config.traitor_scaling)
-		num_insurrectionists = max(1, round((num_players())/(traitor_scaling_coeff)))
+		num_insurrectionists = max(1, round((num_players())/(insurrectionists_scaling_coeff)))
 	else
-		num_insurrectionists = max(1, min(num_players(), traitors_possible))
+		num_insurrectionists = max(1, min(num_players(), insurrectionists_possible))
 
 	for(var/datum/mind/player in possible_traitors)
 		for(var/job in restricted_jobs)
@@ -54,4 +52,18 @@
 
 	if(!traitors.len)
 		return 0
+	return 1
+
+
+/datum/game_mode/insurrection/post_setup()
+	for(var/datum/mind/traitor in traitors)
+		forge_traitor_objectives(traitor)
+		spawn(rand(10,100))
+			finalize_traitor(traitor)
+			greet_traitor(traitor)
+	modePlayer += traitors
+	if(!mixed)
+		spawn (rand(waittime_l, waittime_h))
+			send_intercept()
+	..()
 	return 1

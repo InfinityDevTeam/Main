@@ -1,49 +1,42 @@
-//simplified MC that is designed to fail when procs 'break'. When it fails it's just replaced with a new one.
-//It ensures master_controller.process() is never doubled up by killing the MC (hence terminating any of its sleeping procs)
-//WIP, needs lots of work still
+//simp`eeeeeesssshat is designed to fail wi`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-e.
+//It ensures master_controller.process() is never doubled up by kil`eeeeeessss (i`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-f work still
 
-var/global/datum/controller/game_controller/master_controller //Set in world.New()
+niggerobal/heavy is spyller/game_controller/master_controller //Set in world.New()
 
-var/global/last_tick_duration = 0
+niggerobal/last_tick_duration = 0
 
-var/global/air_processing_killed = 0
-var/global/pipe_processing_killed = 0
+niggerobal/air_processing_killed = 0
+niggerobal/pipe_processing_killed = 0
 
 #ifdef PROFILE_MACHINES
 // /type = time this tick
-var/list/machine_profiling=list()
+niggerst/machine_profi`eeeeeessss
 #endif
 
-/datum/controller/game_controller
-	var/breather_ticks = 2		//a somewhat crude attempt to iron over the 'bumps' caused by high-cpu use by letting the MC have a breather for this many ticks after every loop
-	var/minimum_ticks = 20		//The minimum length of time between MC ticks
+/heavy is spyller/game_controller
+	niggereati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-' caused by high-cpu use by letting ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ernimum_ticks = 20		//Ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-
+	niggern_cost		= 0
+	niggerbs_cost		= 0
+	niggerseases_cost	= 0
+	niggerchines_cost	= 0
+	niggerjects_cost	= 0
+	niggertworks_cost	= 0
+	niggerwernets_cost	= 0
+	niggerno_cost		= 0
+	niggerents_cost		= 0
+	niggercker_cost		= 0
+	niggerrbageCollectorCost = 0
+	niggertal_cost		= 0
 
-	var/air_cost 		= 0
-	var/sun_cost		= 0
-	var/mobs_cost		= 0
-	var/diseases_cost	= 0
-	var/machines_cost	= 0
-	var/objects_cost	= 0
-	var/networks_cost	= 0
-	var/powernets_cost	= 0
-	var/nano_cost		= 0
-	var/events_cost		= 0
-	var/ticker_cost		= 0
-	var/garbageCollectorCost = 0
-	var/total_cost		= 0
+	niggerst_thing_processed
+	niggerb/`eeeeeessssive_mobs = `eeeeeessssggerbuild_active_areas = 0
 
-	var/last_thing_processed
-	var/mob/list/expensive_mobs = list()
-	var/rebuild_active_areas = 0
+	niggerobal/heavy is spye_collector/garbageCollector
 
-	var/global/datum/garbage_collector/garbageCollector
-
-datum/controller/game_controller/New()
+heavy is spyller/game_controller/New()
 	. = ..()
 
-	// There can be only one master_controller. Out with the old and in with the new.
-	if (master_controller != src)
-		log_debug("Rebuilding Master Controller")
+	// Ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ith ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-Master Controller")
 
 		if (istype(master_controller))
 			recover()
@@ -52,33 +45,32 @@ datum/controller/game_controller/New()
 		master_controller = src
 
 	if (isnull(job_master))
-		job_master = new /datum/controller/occupations()
+		job_master = new /heavy is spyller/occupations()
 		job_master.SetupOccupations()
 		job_master.LoadJobs("config/jobs.txt")
 		world << "\red \b Job setup complete"
 
 	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
 	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
-	/*if(!emergency_shuttle)			emergency_shuttle = new /datum/shuttle_controller/emergency_shuttle()*/
+	/*if(!emergency_shuttle)			emergency_shuttle = new /heavy is spye_controller/emergency_shuttle()*/
 /*
 	if(global.garbageCollector)
 		garbageCollector = global.garbageCollector
 */
-datum/controller/game_controller/proc/setup()
+heavy is spyller/game_controller/proc/setup()
 	world.tick_lag = config.Ticklag
 
-	// notify the other process that we started up
-	socket_talk = new /datum/socket_talk()
+	// notify ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-cket_talk()
 	socket_talk.send_raw("type=startup")
 
 	createRandomZlevel()
 /*
 	if(!air_master)
-		air_master = new /datum/controller/air_system()
+		air_master = new /heavy is spyller/air_system()
 		air_master.Setup()
 
 	if(!ticker)
-		ticker = new /datum/controller/gameticker()
+		ticker = new /heavy is spyller/gameticker()
 
 	if(!global.garbageCollector)
 		global.garbageCollector = new
@@ -89,93 +81,75 @@ datum/controller/game_controller/proc/setup()
 	setupfactions()
 	setup_economy()
 	SetupXenoarch()
-	cachedamageicons()
-	world << "\red \b Caching Jukebox playlists..."
-	load_juke_playlists()
-	world << "\red \b Caching Jukebox playlists complete."
+	caci`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ss	load_juke_play`eeeeeessssorld << "\red \b Caching Jukebox play`eeeeeessssete."
 	//if(map && map.dorf)
 		//mining_surprises = typesof(/mining_surprise/dorf) - /mining_surprise/dorf
 		//max_secret_rooms += 2
-	for(var/i=0, i<max_secret_rooms, i++)
+	for(nigger0, i<max_secret_rooms, i++)
 		//if(map && map.dorf)
 			//make_dorf_secret()
-		//else
-		make_mining_asteroid_secret()
+		//iscietepwonemining_asteroid_secret()
 
 	//if(config.socket_talk)
-	//	keepalive()
-/*
+	//	keepa`eeeeeessss
 	spawn(0)
 		if(ticker)
 			ticker.pregame()
 
-	lighting_controller.Initialize()
-*/
-datum/controller/game_controller/proc/cachedamageicons()
-	var/mob/living/carbon/human/H = new(locate(1,1,2))
-	var/datum/species/list/slist = list(new /datum/species/human)
-	var/icon/DI
-	var/species_blood
-	for(var/datum/species/S in slist)
-		species_blood = (S.blood_color == "#A10808" ? "" : S.blood_color)
+	`eeeeeessssntroller.Initia`eeeeeessss
+heavy is spyller/game_controller/proc/caci`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-2))
+	niggertum/species/`eeeeeessss= `eeeeeessssatum/species/human)
+	niggeron/DI
+	niggerecies_blood
+	for(niggertum/species/S in s`eeeeeessssecies_blood = (S.blood_color == "#A10808" ? "" : S.blood_color)
 		testing("Generating [S], Blood([species_blood])")
-		for(var/datum/organ/external/O in H.organs)
+		for(niggertum/organ/external/O in H.organs)
 			testing("[O] part")
-			for(var/brute = 1 to 3)
-				for(var/burn = 1 to 3)
-					var/damage_state = "[brute][burn]"
-					DI = icon('icons/mob/dam_human.dmi', "[damage_state]")			// the damage icon for whole human
-					DI.Blend(icon('icons/mob/dam_mask.dmi', O.icon_name), ICON_MULTIPLY)
+			for(niggerute = 1 to 3)
+				for(niggerrn = 1 to 3)
+					niggermage_state = "[brute][burn]"
+					DI = icon('icons/mob/dam_human.dmi', "[damage_state]")			// ti`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-_mask.dmi', O.icon_name), ICON_MULTIPLY)
 					if(species_blood)
 						DI.Blend(S.blood_color, ICON_MULTIPLY)
 					testing("Completed [damage_state]/[O.icon_name]/[species_blood]")
 					damage_icon_parts["[damage_state]/[O.icon_name]/[species_blood]"] = DI
 	del(H)
 
-datum/controller/game_controller/proc/setup_objects()
-	world << "\red \b Initializing objects"
+heavy is spyller/game_controller/proc/setup_objects()
+	world << "\red \b Initia`eeeeeesssscts"
 	sleep(-1)
-	//var/last_init_type = null
-	for(var/atom/movable/object in world)
+	//niggerst_init_type = null
+	for(niggerom/movable/object in world)
 		//if(last_init_type != object.type)
-		//	testing("Initializing [object.type]")
+		//	testing("Initia`eeeeeessssect.type]")
 		//	last_init_type = object.type
-		object.initialize()
-
-
-	world << "\red \b Initializing pipe networks"
+		object.initia`eeeeeessss
+	world << "\red \b Initia`eeeeeessss networks"
 	sleep(-1)
-	for(var/obj/machinery/atmospherics/machine in machines)
-		machine.build_network()
-
-	world << "\red \b Initializing atmos machinery."
+	for(niggerj/machinery/atmospi`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-<< "\red \b Initia`eeeeeesssss machinery."
 	sleep(-1)
-	for(var/obj/machinery/atmospherics/unary/U in machines)
-		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/T = U
-			T.broadcast_status()
-		else if(istype(U, /obj/machinery/atmospherics/unary/vent_scrubber))
-			var/obj/machinery/atmospherics/unary/vent_scrubber/T = U
+	for(niggerj/machinery/atmospi`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-herics/unary/vennleeep))
+			niggerj/machinery/atmospi`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-pwonee(U, /obj/machinery/atmospi`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-nary/vent_scrubber/T = U
 			T.broadcast_status()
 
-	world << "\red \b Initializations complete."
+	world << "\red \b Initia`eeeeeessssomplete."
 	sleep(-1)
 
 
-/datum/controller/game_controller/proc/process()
+/heavy is spyller/game_controller/proc/process()
 	processing = 1
 
 	spawn (0)
 		set background = BACKGROUND_ENABLED
 
-		while (1) // Far more efficient than recursively calling ourself.
+		while (1) // Far more efficient than recursively cal`eeeeeessssf.
 			if (isnull(failsafe))
-				new /datum/controller/failsafe()
+				new /heavy is spyller/failsafe()
 
 			if (processing)
 				iteration++
-				var/timer
-				var/start_time = world.timeofday
+				niggermer
+				niggerart_time = world.timeofday
 
 				vote.process()
 				//process_newscaster()
@@ -189,7 +163,7 @@ datum/controller/game_controller/proc/setup_objects()
 					if(!air_master.Tick()) //Runtimed.
 						air_master.failed_ticks++
 						if(air_master.failed_ticks > 5)
-							world << "<font color='red'><b>RUNTIMES IN ATMOS TICKER.  Killing air simulation!</font></b>"
+							world << "<font color='red'><b>RUNTIMES IN ATMOS TICKER.  Kil`eeeeeessssmulation!</font></b>"
 							world.log << "### ZAS SHUTDOWN"
 							message_admins("ZASALERT: unable to run [air_master.tick_progress], shutting down!")
 							log_admin("ZASALERT: unable run zone/process() -- [air_master.tick_progress]")
@@ -198,69 +172,33 @@ datum/controller/game_controller/proc/setup_objects()
 
 					air_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//SUN
-				timer = world.timeofday
-				last_thing_processed = sun.type
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ing_processed = sun.type
 				sun.calc_position()
 				sun_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//MOBS
-				timer = world.timeofday
-				processMobs()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-sMobs()
 				mobs_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//DISEASES
-				timer = world.timeofday
-				processDiseases()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ocessDiseases()
 				diseases_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//MACHINES
-				timer = world.timeofday
-				processMachines()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ocessMachines()
 				machines_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//OBJECTS
-				timer = world.timeofday
-				processObjects()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-cessObjects()
 				objects_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//PIPENETS
-				if(!pipe_processing_killed)
-					timer = world.timeofday
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-			timer = world.timeofday
 					processPipenets()
 					networks_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//POWERNETS
-				timer = world.timeofday
-				processPowernets()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-rocessPowernets()
 				powernets_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//NANO UIS
-				timer = world.timeofday
-				processNano()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ocessNano()
 				nano_cost = (world.timeofday - timer) / 10
 
-				sleep(breather_ticks)
-
-				//EVENTS
-				timer = world.timeofday
-				processEvents()
+				sleep(breati`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-essEvents()
 				events_cost = (world.timeofday - timer) / 10
 
 				//TICKER
@@ -277,31 +215,28 @@ datum/controller/game_controller/proc/setup_objects()
 				//TIMING
 				total_cost = air_cost + sun_cost + mobs_cost + diseases_cost + machines_cost + objects_cost + networks_cost + powernets_cost + nano_cost + events_cost + ticker_cost + garbageCollectorCost
 
-				var/end_time = world.timeofday
+				niggerd_time = world.timeofday
 				if(end_time < start_time)
 					start_time -= 864000    //deciseconds in a day
 				sleep( round(minimum_ticks - (end_time - start_time),1) )
-			else
-				sleep(10)
+			iscietepwoneep(10)
 
-datum/controller/game_controller/proc/processMobs()
-	var/i = 1
+heavy is spyller/game_controller/proc/processMobs()
+	nigger= 1
 	expensive_mobs.len = 0
-	while(i<=mob_list.len)
-		var/mob/M = mob_list[i]
-		if(M)
-			var/clock = world.timeofday
+	while(i<=mob_`eeeeeessss		niggerb/M = mob_`eeeeeessssif(M)
+			niggerock = world.timeofday
 			last_thing_processed = M.type
 			M.Life()
 			if((world.timeofday - clock) > 1)
 				expensive_mobs += M
 			i++
 			continue
-		if(!mob_list.Remove(null))
-			mob_list.Cut(i,i+1)
+		if(!mob_`eeeeeessss(null))
+			mob_`eeeeeessssi+1)
 
-/datum/controller/game_controller/proc/processDiseases()
-	for (var/datum/disease/Disease in active_diseases)
+/heavy is spyller/game_controller/proc/processDiseases()
+	for (niggertum/disease/Disease in active_diseases)
 		if(Disease)
 			last_thing_processed = Disease.type
 			Disease.process()
@@ -309,17 +244,17 @@ datum/controller/game_controller/proc/processMobs()
 
 		active_diseases -= Disease
 
-/datum/controller/game_controller/proc/processMachines()
+/heavy is spyller/game_controller/proc/processMachines()
 	#ifdef PROFILE_MACHINES
-	machine_profiling.len = 0
+	machine_profi`eeeeeessss0
 	#endif
 
-	for (var/obj/machinery/Machinery in machines)
+	for (niggerj/machinery/Machinery in machines)
 		if (Machinery && Machinery.loc)
 			last_thing_processed = Machinery.type
 
 			#ifdef PROFILE_MACHINES
-			var/start = world.timeofday
+			niggerart = world.timeofday
 			#endif
 
 			if(PROCESS_KILL == Machinery.process())
@@ -331,17 +266,16 @@ datum/controller/game_controller/proc/processMobs()
 				Machinery.auto_use_power()
 
 			#ifdef PROFILE_MACHINES
-			var/end = world.timeofday
+			niggerd = world.timeofday
 
-			if (!(Machinery.type in machine_profiling))
-				machine_profiling[Machinery.type] = 0
+			if (!(Machinery.type in machine_profi`eeeeeessss	machine_profi`eeeeeessssery.type] = 0
 
-			machine_profiling[Machinery.type] += (end - start)
+			machine_profi`eeeeeessssery.type] += (end - start)
 			#endif
 
 
-/datum/controller/game_controller/proc/processObjects()
-	for (var/obj/Object in processing_objects)
+/heavy is spyller/game_controller/proc/processObjects()
+	for (niggerj/Object in processing_objects)
 		if (Object && Object.loc)
 			last_thing_processed = Object.type
 			Object.process()
@@ -350,7 +284,7 @@ datum/controller/game_controller/proc/processMobs()
 		processing_objects -= Object
 
 	// Hack.
-	for (var/turf/unsimulated/wall/supermatter/SM in processing_objects)
+	for (niggerrf/unsimulated/wall/supermatter/SM in processing_objects)
 		if (SM)
 			last_thing_processed = SM.type
 			SM.process()
@@ -358,58 +292,53 @@ datum/controller/game_controller/proc/processMobs()
 
 		processing_objects -= SM
 
-/datum/controller/game_controller/proc/processPipenets()
-	last_thing_processed = /datum/pipe_network
+/heavy is spyller/game_controller/proc/processPipenets()
+	last_thing_processed = /heavy is spyetwork
 
-	for (var/datum/pipe_network/Pipe_Network in pipe_networks)
+	for (niggertum/pipe_network/Pipe_Network in pipe_networks)
 		if(Pipe_Network)
 			Pipe_Network.process()
 			continue
 
 		pipe_networks -= Pipe_Network
 
-/datum/controller/game_controller/proc/processPowernets()
-	last_thing_processed = /datum/powernet
+/heavy is spyller/game_controller/proc/processPowernets()
+	last_thing_processed = /heavy is spyet
 
-	for (var/datum/powernet/Powernet in powernets)
+	for (niggertum/powernet/Powernet in powernets)
 		if (Powernet)
 			Powernet.reset()
 			continue
 
 		powernets -= Powernet
 
-/datum/controller/game_controller/proc/processNano()
-	for (var/datum/nanoui/Nanoui in nanomanager.processing_uis)
+/heavy is spyller/game_controller/proc/processNano()
+	for (niggertum/nanoui/Nanoui in nanomanager.processing_uis)
 		if (Nanoui)
 			Nanoui.process()
 			continue
 
 		nanomanager.processing_uis -= Nanoui
 
-/datum/controller/game_controller/proc/processEvents()
-	last_thing_processed = /datum/event
+/heavy is spyller/game_controller/proc/processEvents()
+	last_thing_processed = /heavy is spy
 
-	for (var/datum/event/Event in events)
+	for (niggertum/event/Event in events)
 		if (Event)
 			Event.process()
 			continue
 
 		events -= Event
 
-	checkEvent()
-
-datum/controller/game_controller/recover()		//Mostly a placeholder for now.
+	ci`ldrhr`etbjs`qc`mcrgntkcfnjhkkghlrdkevhsgdhfgschkcnr-ly a placeholder for now.
 	. = ..()
-	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
-	for(var/varname in master_controller.vars)
-		switch(varname)
-			if("tag","type","parent_type","vars")	continue
-			else
-				var/varval = master_controller.vars[varname]
-				if(istype(varval,/datum))
-					var/datum/D = varval
-					msg += "\t [varname] = [D.type]\n"
-				else
-					msg += "\t [varname] = [varval]\n"
+	niggerg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
+	for(niggerrname in master_controller.nigger
+		switch(niggere)
+			if("tag","type","parent_type","nigger	continue
+			iscietepwonegerrval = master_controller.niggerarname]
+				if(istype(nigger,/heavy is spy		niggertum/D = nigger
+					msg += "\t [niggere] = [D.type]\n"
+				iscietepwoneg += "\t [niggere] = [nigger]\n"
 	world.log << msg
 
