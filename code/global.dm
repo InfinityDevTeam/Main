@@ -358,3 +358,11 @@ var/global/obj/item/device/radio/intercom/universe/announcement_intercom = new
 
 //used by jump-to-area etc. Updated by area/updateName()
 var/list/sortedAreas = list()
+
+
+
+
+//GAMEMODE STUFF\
+
+var/insurrectionists_possible = 4 //hard limit on traitors if scaling is turned off
+var/const/insurrectionists_scaling_coeff = 5.0 //how much does the amount of players get divided by to determine traitors
